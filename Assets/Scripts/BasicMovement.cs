@@ -9,7 +9,6 @@ public class BasicMovement : MonoBehaviour
 
     [SerializeField] private float moveDistance = 1f;
     [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private bool slide = false; //this should be on the gameobject to be moved
 
     private void Update()
     {
@@ -31,22 +30,22 @@ public class BasicMovement : MonoBehaviour
 
             if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
-                if (slide)
+                if (hit.collider.tag == "Number")
                 {
                     rb.velocity = new Vector2(direction.x / Mathf.Abs(direction.x) * moveSpeed, 0);
                 }
-                else
+                else if(hit.collider.tag == "Word")
                 {
                     hit.transform.position += new Vector3(direction.x/Mathf.Abs(direction.x) *  moveDistance, 0, 0);
                 }
             }
             else if(Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
             {
-                if (slide)
+                if (hit.collider.tag == "Number")
                 {
                     rb.velocity = new Vector2(0, (direction.y / Mathf.Abs(direction.y)) * moveSpeed);
                 }
-                else
+                else if(hit.collider.tag == "Word")
                 {
                     hit.transform.position += new Vector3(0, (direction.y / Mathf.Abs(direction.y)) * moveDistance, 0);
                 }

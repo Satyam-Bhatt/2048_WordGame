@@ -6,6 +6,7 @@ using UnityEngine;
 public class NumberScript : MonoBehaviour
 {
     private TMP_Text myText;
+    [SerializeField] private GameObject number_4;
     
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class NumberScript : MonoBehaviour
                 TMP_Text text = col.GetComponentInChildren<TMP_Text>();
                 if (text != null && text.text == myText.text)
                 {
-                    Debug.Log("found Number");
+                    Instantiate(number_4, transform.position, Quaternion.identity);
                 }
             }
         }

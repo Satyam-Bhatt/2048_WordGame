@@ -6,6 +6,8 @@ using TMPro;
 
 public class WordScript : MonoBehaviour
 {
+    [SerializeField] private string letter;
+    [SerializeField] private GameObject number_2;
 
     private void OnDrawGizmos()
     {
@@ -22,9 +24,9 @@ public class WordScript : MonoBehaviour
             if(col.transform.root != transform)
             {
                 TMP_Text text = col.GetComponentInChildren<TMP_Text>();
-                if (text.text == "A")
+                if (text.text == letter)
                 {
-                    Debug.Log("found");
+                    Instantiate(number_2, transform.position, Quaternion.identity);
                 }
             }
         }
